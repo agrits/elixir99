@@ -1,6 +1,6 @@
-defmodule Elixir99 do
+defmodule Elixir99.Lists do
   @moduledoc """
-  Documentation for `Elixir99`.
+  Documentation for `Elixir99.Lists`.
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule Elixir99 do
 
   ## Examples
 
-      iex> Elixir99.hello()
+      iex> Elixir99.Lists.hello()
       :world
 
   """
@@ -52,11 +52,10 @@ defmodule Elixir99 do
     end
   end
 
-  def reverse(list) do
+  def reverse(list, acc \\ []) do
     case list do
-      [] -> []
-      [_] -> list
-      [head | tail] -> reverse(tail) ++ [head]
+      [] -> acc
+      [head | tail] -> reverse(tail, [head] ++ acc)
     end
   end
 
@@ -72,16 +71,16 @@ defmodule Elixir99 do
     end
   end
 
-  def compress(list) do
+  def compress(list, acc \\ []) do
     case list do
       [] -> []
       [_] ->
-        list
+        acc ++ list
       [first , second | tail] ->
         if first == second do
-          compress([first] ++ tail)
+          compress([first] ++ tail, acc)
         else
-          [first] ++ compress([second] ++ tail)
+          compress([second] ++ tail, acc ++ [first])
         end
     end
   end

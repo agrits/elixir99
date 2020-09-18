@@ -1,7 +1,7 @@
-defmodule Elixir99Test do
+defmodule Elixir99.ListsTest do
   use ExUnit.Case
-  import Elixir99
-  doctest Elixir99
+  import Elixir99.Lists
+  doctest Elixir99.Lists
 
   test "greets the world" do
     assert hello() == :world
@@ -49,7 +49,7 @@ defmodule Elixir99Test do
   end
 
   test "compress should eliminate consecutive duplicates in the list" do
-    assert compress([1, 1, 2, 2, 2, 3, 2, 2, 4]) == [1, 2, 3, 2, 4]
+    assert compress([1, 1, 2, 2, 2, 3, 2, 2, 3, 4, 4 ,4]) == [1, 2, 3, 2, 3, 4]
   end
 
   test "pack should pack consecutive duplicates in the list" do
